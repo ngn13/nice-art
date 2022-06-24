@@ -12,6 +12,9 @@ def notf(msg):
         command = f'''
 		notify-send "Nice Art" "{msg}"
 		'''
+    else:
+        command=f"""mshta vbscript:Execute("msgbox ""{msg}"":close")"""
+
     system(command)
 
 def newline():
@@ -26,11 +29,11 @@ except:
     print("Usage: niceart.py [map] [json]")
     exit()
 
-with open(map, "r") as f:
+with open(map, "r",encoding="utf8") as f:
     map = f.read().split("\n")
     f.close()
 
-with open(jsondata, "r") as f:
+with open(jsondata, "r",encoding="utf8") as f:
     jsondata = json.loads(f.read())
     f.close()
 
